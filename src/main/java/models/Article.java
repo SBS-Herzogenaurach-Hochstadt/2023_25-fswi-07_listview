@@ -1,6 +1,7 @@
 package models;
 
-public class Articel {
+@SuppressWarnings("unused")
+public class Article {
 	private String itemNumber;
 	private String name;
 	private String description;
@@ -20,18 +21,18 @@ public class Articel {
 	private double depth;
 	private String expirationDate; // if applicable
 
-	public Articel() {
+	public Article() {
 
 	}
 
-	public Articel(String itemNumber, String name) {
+	public Article(String itemNumber, String name) {
 		this(itemNumber, name, null, null, null, 0, 0, 0.0, 0.0, null, null, 0, null, 0.0, 0.0, 0.0, 0.0, null);
 	}
 
-	public Articel(String itemNumber, String name, String description, String category,
-	            String manufacturer, int stockLevel, int minimumStock, double purchasePrice,
-	            double sellingPrice, String storageLocation, String orderStatus, int deliveryTime,
-	            String ean, double weight, double height, double width, double depth, String expirationDate) {
+	public Article(String itemNumber, String name, String description, String category,
+	               String manufacturer, int stockLevel, int minimumStock, double purchasePrice,
+	               double sellingPrice, String storageLocation, String orderStatus, int deliveryTime,
+	               String ean, double weight, double height, double width, double depth, String expirationDate) {
 		this.itemNumber = itemNumber;
 		this.name = name;
 		this.description = description;

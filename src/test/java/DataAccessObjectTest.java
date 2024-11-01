@@ -1,4 +1,4 @@
-import models.Articel;
+import models.Article;
 import org.junit.jupiter.api.Test;
 import services.DataAccessObject;
 
@@ -11,8 +11,8 @@ public class DataAccessObjectTest {
 
 	@Test
 	public void testFindAll() {
-		List<Articel> articels = DataAccessObject.findAll();
-		assertNotNull(articels, "The list of articels should not be null");
-		assertEquals(500, articels.size(), "The count of items should be 500");
+		List<Article> articles = DataAccessObject.findAll();
+		assertNotNull(articles, "The list of articles should not be null");
+		assertEquals(500, articles.size(), "The count of items should be 500");
 	}
 }
