@@ -1,8 +1,8 @@
 package models;
 
 @SuppressWarnings("unused")
-public class Article {
-	private String itemNumber;
+public class Product {
+	private String productNumber;
 	private String name;
 	private String description;
 	private String category;
@@ -21,19 +21,19 @@ public class Article {
 	private double depth;
 	private String expirationDate; // if applicable
 
-	public Article() {
+	public Product() {
 
 	}
 
-	public Article(String itemNumber, String name) {
-		this(itemNumber, name, null, null, null, 0, 0, 0.0, 0.0, null, null, 0, null, 0.0, 0.0, 0.0, 0.0, null);
+	public Product(String productNumber, String name) {
+		this(productNumber, name, null, null, null, 0, 0, 0.0, 0.0, null, null, 0, null, 0.0, 0.0, 0.0, 0.0, null);
 	}
 
-	public Article(String itemNumber, String name, String description, String category,
+	public Product(String productNumber, String name, String description, String category,
 	               String manufacturer, int stockLevel, int minimumStock, double purchasePrice,
 	               double sellingPrice, String storageLocation, String orderStatus, int deliveryTime,
 	               String ean, double weight, double height, double width, double depth, String expirationDate) {
-		this.itemNumber = itemNumber;
+		this.productNumber = productNumber;
 		this.name = name;
 		this.description = description;
 		this.category = category;
@@ -53,8 +53,8 @@ public class Article {
 		this.expirationDate = expirationDate;
 	}
 
-	public String getItemNumber() { return itemNumber; }
-	public void setItemNumber(String itemNumber) { this.itemNumber = itemNumber; }
+	public String getProductNumber() { return productNumber; }
+	public void setProductNumber(String productNumber) { this.productNumber = productNumber; }
 
 	public String getName() { return name; }
 	public void setName(String name) { this.name = name; }
@@ -111,7 +111,7 @@ public class Article {
 	@Override
 	public String toString() {
 		return "Item{" +
-				"itemNumber='" + itemNumber + '\'' +
+				"itemNumber='" + productNumber + '\'' +
 				", name='" + name + '\'' +
 				", description='" + description + '\'' +
 				", category='" + category + '\'' +
