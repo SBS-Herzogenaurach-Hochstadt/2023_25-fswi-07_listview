@@ -2,7 +2,7 @@ package services;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import models.Article;
+import models.Product;
 
 import java.io.InputStream;
 import java.nio.file.Files;
@@ -11,15 +11,15 @@ import java.util.List;
 
 public class DataAccessObject {
 
-	public List<Article> findAll() {
+	public List<Product> findAll() {
 		ObjectMapper objectMapper = new ObjectMapper();
-		List<Article> articles = null;
-		try (InputStream inputStream = Files.newInputStream(Paths.get("src/main/resources/articles.txt"))) {
-			articles = objectMapper.readValue(inputStream, new TypeReference<>() {
+		List<Product> products = null;
+		try (InputStream inputStream = Files.newInputStream(Paths.get("src/main/resources/products.txt"))) {
+			products = objectMapper.readValue(inputStream, new TypeReference<>() {
 			});
 		} catch (Exception ignored) {
 
 		}
-		return articles;
+		return products;
 	}
 }

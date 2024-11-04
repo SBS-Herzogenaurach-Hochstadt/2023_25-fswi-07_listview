@@ -1,4 +1,4 @@
-import models.Article;
+import models.Product;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -11,23 +11,23 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 public class DataAccessObjectTest {
 
-	private static List<Article> articles;
+	private static List<Product> products;
 
 	@BeforeAll
 	public static void setUp() {
 		DataAccessObject dao = new DataAccessObject();
-		articles = dao.findAll();
+		products = dao.findAll();
 	}
 
 	@Test
-	@DisplayName("FindAll should return a non-null list of articles")
+	@DisplayName("FindAll should return a non-null list of products")
 	public void testFindAllReturnsNonNullList() {
-		assertNotNull(articles, "The list of articles should not be null");
+		assertNotNull(products, "The list of products should not be null");
 	}
 
 	@Test
 	@DisplayName("List of Articles should have 500 Elements")
 	public void testListOfArticlesHasSize500() {
-		assertEquals(500, articles.size(), "The count of items should be 500");
+		assertEquals(500, products.size(), "The count of items should be 500");
 	}
 }
