@@ -14,42 +14,48 @@ import java.util.List;
 
 public class MainView extends JFrame {
 
-    public MainView() {
+    private DataAccessObject dao;
+    private DefaultTableModel model;
+    private String[] columnNames;
+    private MyButton btn;
+
+    public MainView(DataAccessObject dao) {
+        this.dao = dao;
         setTitle("TableView");
         setIconImage(new ImageIcon(getClass().getResource("/images/fswi32x32.png")).getImage());
 
         getContentPane().setBackground(new Color(46, 204, 250));
 
-        String[] columnNames = {
-                "Product Number",
-                "Name",
-                "Description",
-                "Category",
-                "Manufacturer",
-                "Stock Level",
-                "Minimum Stock",
-                "Purchase Price",
-                "Selling Price",
-                "Storage Location",
-                "Order Status",
-                "Delivery Time",
-                "EAN",
-                "Weight",
-                "Height",
-                "Width",
-                "Depth",
-                "Expiration Date"
+        columnNames = new String[] {
+		        "Product Number",
+		        "Name",
+		        "Description",
+		        "Category",
+		        "Manufacturer",
+		        "Stock Level",
+		        "Minimum Stock",
+		        "Purchase Price",
+		        "Selling Price",
+		        "Storage Location",
+		        "Order Status",
+		        "Delivery Time",
+		        "EAN",
+		        "Weight",
+		        "Height",
+		        "Width",
+		        "Depth",
+		        "Expiration Date"
         };
 
         // Tabelle mit Spaltenüberschriften und Daten erstellen
-        DefaultTableModel model = new DefaultTableModel(null, columnNames);
+        model = new DefaultTableModel(null, columnNames);
         JTable table = new JTable(model);
 
         // Tabelle in ScrollPane einfügen
         JScrollPane scrollPane = new JScrollPane(table);
         getContentPane().add(scrollPane, BorderLayout.CENTER);
 
-        MyButton btn = new MyButton("Load Table");
+        btn = new MyButton("Load Table");
         btn.addActionListener(new LoadEventHandler());
         getContentPane().add(btn, BorderLayout.PAGE_END);
         setExtendedState(JFrame.MAXIMIZED_BOTH);
@@ -60,9 +66,30 @@ public class MainView extends JFrame {
     private class LoadEventHandler implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
-            DataAccessObject dao = new DataAccessObject();
             List<Product> products = dao.findAll();
-            products.stream().forEach(System.out::println);
+            Object[][] data = products.stream().parallel()
+                    .map(product -> new Object[] {
+                            product.getProductNumber(),
+                            product.getName(),
+                            product.getDescription(),
+                            product.getCategory(),
+                            product.getManufacturer(),
+                            product.getStockLevel(),
+                            product.getMinimumStock(),
+                            product.getPurchasePrice(),
+                            product.getSellingPrice(),
+                            product.getStorageLocation(),
+                            product.getOrderStatus(),
+                            product.getDeliveryTime(),
+                            product.getEan(),
+                            product.getWeight(),
+                            product.getHeight(),
+                            product.getWidth(),
+                            product.getDepth(),
+                            product.getExpirationDate()
+                    }).toArray(Object[][]::new);
+            model.setDataVector(data, columnNames);
+            btn.setEnabled(false);
         }
     }
 }
