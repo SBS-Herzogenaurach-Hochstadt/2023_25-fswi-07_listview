@@ -13,13 +13,13 @@ public class DataAccessObject {
 
 	public List<Product> findAll() {
 		ObjectMapper objectMapper = new ObjectMapper();
-		List<Product> products = null;
+		List<Product> producte = null;
 		try (InputStream inputStream = Files.newInputStream(Paths.get(""))) {
-			products = objectMapper.readValue(inputStream, new TypeReference<>() {
+			producte = objectMapper.readValue(inputStream, new TypeReference<>() {
 			});
 		} catch (Exception ignored) {
 
 		}
-		return products;
+		return producte;
 	}
 }
