@@ -14,7 +14,7 @@ public class DataAccessObject {
 	public List<Product> findAll() {
 		ObjectMapper objectMapper = new ObjectMapper();
 		List<Product> products = null;
-		try (InputStream inputStream = Files.newInputStream(Paths.get("src/main/resources/data/products.txt"))) {
+		try (InputStream inputStream = Files.newInputStream(Paths.get(""))) {
 			products = objectMapper.readValue(inputStream, new TypeReference<>() {
 			});
 		} catch (Exception ignored) {
